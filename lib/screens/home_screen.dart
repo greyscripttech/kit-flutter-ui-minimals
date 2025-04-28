@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../common/widgets/animated_card.dart';
 import '../common/widgets/glass_container.dart';
 import '../common/widgets/custom_button.dart';
+import '../common/widgets/custom_modal.dart';
+import '../common/widgets/custom_toggle.dart';
+import '../common/widgets/custom_loader.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,12 +16,44 @@ class HomeScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: ListView(
-          children: const [
-            AnimatedCard(title: 'Animated Card'),
-            SizedBox(height: 16),
-            GlassContainer(child: Text('Glassmorphic Container')),
-            SizedBox(height: 16),
-            CustomButton(label: 'Click Me'),
+          children: [
+            const AnimatedCard(title: 'Animated Card'),
+            const SizedBox(height: 16),
+            const GlassContainer(child: Text('Glassmorphic Container')),
+            const SizedBox(height: 16),
+            const CustomButton(label: 'Click Me'),
+            const SizedBox(height: 16),
+            CustomButton(
+              label: 'Open Modal',
+              onPressed: () {
+                CustomModal.show(context, child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Hello from Modal!', style: Theme.of(context).textTheme.headlineSmall),
+                    const SizedBox(height: 10),
+                    const Text('You can put any custom content here.'),
+                    const SizedBox(height: 20),
+                    CustomButton(label: 'Close', onPressed: () => Navigator.pop(context)),
+                  ],
+                ));
+              },
+            ),
+            const SizedBox(height: 24),
+            const Text('Toggle Switch Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            StatefulBuilder(
+              builder: (context, setState) {
+                bool isSwitched = false;
+                return CustomToggle(
+                  value: isSwitched,
+                  onChanged: (value) => setState(() => isSwitched = value),
+                );
+              },
+            ),
+            const SizedBox(height: 24),
+            const Text('Loader Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            const CustomLoader(),
           ],
         ),
       ),
