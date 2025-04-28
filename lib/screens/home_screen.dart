@@ -6,6 +6,7 @@ import '../common/widgets/custom_modal.dart';
 import '../common/widgets/custom_toggle.dart';
 import '../common/widgets/custom_loader.dart';
 import '../common/widgets/custom_grid_card.dart';
+import '../common/widgets/custom_tab_switcher.dart'; // ✅ New Import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -70,6 +71,15 @@ class HomeScreen extends StatelessWidget {
                 CustomGridCard(title: 'Work', icon: Icons.work),
                 CustomGridCard(title: 'Travel', icon: Icons.flight),
               ],
+            ),
+            const SizedBox(height: 24),
+            const Text('Tab Switcher Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            CustomTabSwitcher(
+              tabs: const ['Home', 'Work', 'Travel'],
+              onTabChanged: (index) {
+                debugPrint('Selected Tab: $index');
+              },
             ),
           ],
         ),
