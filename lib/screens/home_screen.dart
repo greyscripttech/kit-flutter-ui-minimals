@@ -3,6 +3,8 @@ import '../common/widgets/animated_card.dart';
 import '../common/widgets/glass_container.dart';
 import '../common/widgets/custom_button.dart';
 import '../common/widgets/custom_modal.dart';
+import '../common/widgets/custom_toggle.dart';
+import '../common/widgets/custom_loader.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -36,6 +38,22 @@ class HomeScreen extends StatelessWidget {
                 ));
               },
             ),
+            const SizedBox(height: 24),
+            const Text('Toggle Switch Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            StatefulBuilder(
+              builder: (context, setState) {
+                bool isSwitched = false;
+                return CustomToggle(
+                  value: isSwitched,
+                  onChanged: (value) => setState(() => isSwitched = value),
+                );
+              },
+            ),
+            const SizedBox(height: 24),
+            const Text('Loader Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            const CustomLoader(),
           ],
         ),
       ),
