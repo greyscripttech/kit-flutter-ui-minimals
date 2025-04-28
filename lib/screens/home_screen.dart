@@ -7,7 +7,8 @@ import '../common/widgets/custom_toggle.dart';
 import '../common/widgets/custom_loader.dart';
 import '../common/widgets/custom_grid_card.dart';
 import '../common/widgets/custom_tab_switcher.dart';
-import '../common/widgets/custom_progress_bar.dart'; // ✅ New Import
+import '../common/widgets/custom_progress_bar.dart';
+import '../common/widgets/custom_chip.dart'; // ✅ New Import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -86,6 +87,30 @@ class HomeScreen extends StatelessWidget {
             const Text('Progress Bar Example', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             const CustomProgressBar(progress: 0.6),
+            const SizedBox(height: 24),
+            const Text('Chip Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            StatefulBuilder(
+              builder: (context, setState) {
+                int selectedIndex = 0;
+                final List<String> categories = ['All', 'Fitness', 'Business', 'Travel'];
+
+                return Wrap(
+                  spacing: 8,
+                  children: List.generate(categories.length, (index) {
+                    return CustomChip(
+                      label: categories[index],
+                      selected: selectedIndex == index,
+                      onSelected: (bool selected) {
+                        if (selected) {
+                          setState(() => selectedIndex = index);
+                        }
+                      },
+                    );
+                  }),
+                );
+              },
+            ),
           ],
         ),
       ),
