@@ -5,6 +5,8 @@ import '../common/widgets/custom_button.dart';
 import '../common/widgets/custom_modal.dart';
 import '../common/widgets/custom_toggle.dart';
 import '../common/widgets/custom_loader.dart';
+import '../common/widgets/custom_grid_card.dart';
+import '../common/widgets/custom_tab_switcher.dart'; // ✅ New Import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -54,6 +56,31 @@ class HomeScreen extends StatelessWidget {
             const Text('Loader Example', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
             const CustomLoader(),
+            const SizedBox(height: 24),
+            const Text('Card Grid Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              physics: const NeverScrollableScrollPhysics(),
+              children: const [
+                CustomGridCard(title: 'Health', icon: Icons.favorite),
+                CustomGridCard(title: 'Finance', icon: Icons.attach_money),
+                CustomGridCard(title: 'Work', icon: Icons.work),
+                CustomGridCard(title: 'Travel', icon: Icons.flight),
+              ],
+            ),
+            const SizedBox(height: 24),
+            const Text('Tab Switcher Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            CustomTabSwitcher(
+              tabs: const ['Home', 'Work', 'Travel'],
+              onTabChanged: (index) {
+                debugPrint('Selected Tab: $index');
+              },
+            ),
           ],
         ),
       ),
