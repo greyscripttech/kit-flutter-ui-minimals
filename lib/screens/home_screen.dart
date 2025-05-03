@@ -9,7 +9,8 @@ import '../common/widgets/custom_grid_card.dart';
 import '../common/widgets/custom_tab_switcher.dart';
 import '../common/widgets/custom_progress_bar.dart';
 import '../common/widgets/custom_chip.dart';
-import '../common/widgets/custom_snackbar.dart'; // ✅ New Import
+import '../common/widgets/custom_snackbar.dart';
+import '../common/widgets/custom_alert_dialog.dart'; // ✅ New Import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -122,6 +123,22 @@ class HomeScreen extends StatelessWidget {
                   context,
                   message: 'This is a custom snackbar!',
                   backgroundColor: Colors.blueAccent,
+                );
+              },
+            ),
+            const SizedBox(height: 24),
+            const Text('Alert Dialog Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            CustomButton(
+              label: 'Show Alert',
+              onPressed: () {
+                CustomAlertDialog.show(
+                  context,
+                  title: 'Confirm Action',
+                  message: 'Are you sure you want to proceed?',
+                  onConfirm: () {
+                    CustomSnackbar.show(context, message: 'Confirmed!');
+                  },
                 );
               },
             ),
