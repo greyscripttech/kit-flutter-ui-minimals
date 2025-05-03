@@ -8,13 +8,9 @@ import '../common/widgets/custom_loader.dart';
 import '../common/widgets/custom_grid_card.dart';
 import '../common/widgets/custom_tab_switcher.dart';
 import '../common/widgets/custom_progress_bar.dart';
-<<<<<<< Updated upstream
-import '../common/widgets/custom_chip.dart'; // ✅ New Import
-=======
 import '../common/widgets/custom_chip.dart';
 import '../common/widgets/custom_snackbar.dart';
 import '../common/widgets/custom_alert_dialog.dart'; // ✅ New Import
->>>>>>> Stashed changes
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -117,8 +113,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
-<<<<<<< Updated upstream
-=======
             const SizedBox(height: 24),
             const Text('Snackbar Example', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 8),
@@ -148,7 +142,6 @@ class HomeScreen extends StatelessWidget {
                 );
               },
             ),
->>>>>>> Stashed changes
           ],
         ),
       ),
