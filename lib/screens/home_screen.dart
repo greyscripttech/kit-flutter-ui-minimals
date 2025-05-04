@@ -10,7 +10,8 @@ import '../common/widgets/custom_tab_switcher.dart';
 import '../common/widgets/custom_progress_bar.dart';
 import '../common/widgets/custom_chip.dart';
 import '../common/widgets/custom_snackbar.dart';
-import '../common/widgets/custom_alert_dialog.dart'; // ✅ New Import
+import '../common/widgets/custom_alert_dialog.dart';
+import '../common/widgets/custom_slider.dart'; // ✅ New Import
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -138,6 +139,22 @@ class HomeScreen extends StatelessWidget {
                   message: 'Are you sure you want to proceed?',
                   onConfirm: () {
                     CustomSnackbar.show(context, message: 'Confirmed!');
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 24),
+            const Text('Slider Example', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            StatefulBuilder(
+              builder: (context, setState) {
+                double sliderValue = 50;
+                return CustomSlider(
+                  value: sliderValue,
+                  min: 0,
+                  max: 100,
+                  onChanged: (value) {
+                    setState(() => sliderValue = value);
                   },
                 );
               },
